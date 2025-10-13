@@ -18,15 +18,16 @@ model User {
   id           Int            @id @default(autoincrement())
   ip           String
   browser      String
+  adm          Boolean?
   created_at   DateTime       @default(now())
   updated_at   DateTime       @default(now())
   Conversation Conversation[]
 }
 
 model UserRelation {
-  id    Int    @id @default(autoincrement())
-  user1 String
-  user2 String
+  id    Int @id @default(autoincrement())
+  user1 Int
+  user2 Int
 }
 
 model Conversation {
