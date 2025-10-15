@@ -13,18 +13,18 @@ export const findByUserId = async (id: number) => {
     return user;
 }
 
-export const findByUserBrowserIp = async (id: number, browser: string, ip: string) => {
-    const user = await prisma.user.findFirst({
-        select: {
-            id: true,
-            ip: true,
-            browser: true,
-            Conversation: true
-        },
-        where: { id, browser, ip }
-    });
-    return user;
+export const findByUserBrowserIp = async (data: any) => {
+   const user = await prisma.user.findFirst({
+    where: {browser: data.browser, ip: data.ip}
+   });
+   return user;
 }
+
+export const findByUserAdm = async (adm: boolean) => {
+  const user = await prisma.user.findFirst({where: {adm}});
+  return user;
+}
+
 
 export const createUser = async (data: any) => {
     const newUser = await prisma.user.create({
@@ -45,14 +45,4 @@ export const createUserRelation = async (user1: number, user2: number) => {
         }
     });
     return newRelation;
-}
-
-export const createConversation = async (conversation: any, userId: number) => {
-    const newConversation = await prisma.conversation.create({
-        data: {
-            conversation,
-            userId
-        }
-    });
-    return newConversation;
 }

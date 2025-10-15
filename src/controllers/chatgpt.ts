@@ -10,15 +10,20 @@ export const getChat = async (req: Request, res: Response) => {
 }
 
 export const getChatUser = async (req: Request, res: Response) => {
-   const {user1, user2, browser, ip} = req.params;
+   const { user1, user2, browser, ip } = req.params;
    const array = [user1, user2];
-   const users = [];
+   //const users = [];
 
-   for(let index in array){
-      const user = await findByUserBrowserIp(parseInt(array[index]), browser, ip);
-      users.push(user);
+   for (let index in array) {
+      //const user = await findByUserBrowserIp(parseInt(array[index]), browser, ip);
+      //users.push(user);
    }
 
+   res.json({});
+}
 
-   res.json({users});
+export const getChatUserBrowserIp = async (req: Request, res: Response) => {
+   const { browser, ip } = req.params;
+
+   res.json({});
 }

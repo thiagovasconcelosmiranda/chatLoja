@@ -31,10 +31,10 @@ model UserRelation {
 }
 
 model Conversation {
-  id           Int      @id @default(autoincrement())
-  conversation String
-  userId       Int
-  User         User     @relation(fields: [userId], references: [id])
-  created_at   DateTime @default(now())
-  updated_at   DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  message    String
+  userId     Int
+  User       User     @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
